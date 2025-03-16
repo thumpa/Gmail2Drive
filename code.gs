@@ -1,5 +1,5 @@
 function saveAIMeetingSummaryEmails() {
-  var mainFolderName = "Meeting Summaries"; // Root folder
+  var mainFolderName = "Meeting Summaries"; // Root folder on Google Drive
   var mdSubFolderName = "md"; // Markdown subfolder
   var pdfSubFolderName = "pdf"; // PDF subfolder
 
@@ -8,7 +8,7 @@ function saveAIMeetingSummaryEmails() {
   var mdFolder = getOrCreateSubFolder(mainFolder, mdSubFolderName);
   var pdfFolder = getOrCreateSubFolder(mainFolder, pdfSubFolderName);
 
-  var label = GmailApp.getUserLabelByName("AI Meeting Notes"); // Set relevant label
+  var label = GmailApp.getUserLabelByName("AI Meeting Notes"); // Set relevant gmail label
   if (!label) {
     console.log("Label not found: AI Meeting Notes");
     return;
