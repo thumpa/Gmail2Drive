@@ -1,5 +1,5 @@
 # Gmail2Drive
-This is a Google Apps Script to export emails from gmail with the selected label to a specified folder as both markdown and PDF files. This was originally created to get AI meeting summaries out of my email and into Obsidian as markkdown files. The styling for the markdown export has been based on emails from Fathom.ai, so may need adjustments if using a different service or if the emails have a different layout. Processed emails are automatically starred so it will only generate files for new emails.
+This is a Google Apps Script to export emails from Gmail with the selected label to a specified folder as both markdown and PDF files. This was originally created to get AI meeting summaries out of my email and into Obsidian as markkdown files. The styling for the markdown export has been based on emails from Fathom.ai, so may need adjustments if using a different service or if the emails have a different layout. Processed emails are automatically starred so it will only generate files for new emails.
 
 ⸻
 
