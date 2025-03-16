@@ -4,6 +4,7 @@ Google Apps Script to export emails from gMail with the selected label to a spec
 ⸻
 
 📌 Usage
+
 1. Open Google Drive and create a folder named Meeting Summaries
 2. Open Google Apps Script (https://script.google.com/)
 3.	Paste the contents of the code.gs file in the script window
@@ -16,16 +17,35 @@ Google Apps Script to export emails from gMail with the selected label to a spec
 - Scans Gmail for emails with the relevant label
 - Creates a weekly folder inside the specified folder for each format
 - Saves each email as a Markdown file and PDF file inside the correct weekly folder
+- Files are created with the following filename structure:
+  - [EmailSubject][Date][EmailTimeStamp].md
+- Folder Structure Example:
+
+```
+📂 Meeting Summaries/
+   ├── 📂 md/            (Markdown files)
+   │   ├── 📂 2025/
+   │   │   ├── 📂 2025-Week-10/
+   │   │   │   ├── Project_Update_2025-03-14_1430.md
+   │   │   │   ├── Standup_Recap_2025-03-15_0900.md
+   │
+   ├── 📂 pdf/           (PDF files)
+       ├── 📂 2025/
+       │   ├── 📂 2025-Week-10/
+       │   │   ├── Project_Update_2025-03-14_1430.pdf
+       │   │   ├── Standup_Recap_2025-03-15_0900.pdf
+```
 
 ⸻
 
-📌 How to Set Up the Automation
+📌 Automating the Google Apps Script
+
 1.	Click Run (▶) in Google Apps Script to test
 2.	Click Triggers (⏰) → Add Trigger:
 3.	Function to run: saveAIMeetingSummaryEmails
 4.	Choose event source: Time-driven
 5.	Type: Hourly/Daily
-6.	Save changes ✅
+6.	Save changes
 
 ⸻
 
