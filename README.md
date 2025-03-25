@@ -14,7 +14,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ## mail2markdown.gs
 
-📌 Usage
+### 📌 Usage
 
 1. Open Google Drive and create a folder named Meeting Summaries
 2. Open Google Apps Script (https://script.google.com/)
@@ -29,7 +29,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ---
 
-📌 How It Works
+### 📌 How It Works
 
 - Scans Gmail for emails with the relevant label
 - Creates a weekly folder inside the specified folder for each format
@@ -58,7 +58,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ## attachment2drive.gs
 
-📌 Usage
+### 📌 Usage
 
 1. Open Google Drive and create a folder for your attachments
 2. Open Google Apps Script (https://script.google.com/)
@@ -71,7 +71,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
    - `fileNamePrefix`: Prefix for saved files (can be different from label)
 5. Save and run the script
 
-📌 Gmail Label Configuration
+### 📌 Gmail Label Configuration
 
 - For nested labels, specify the full path using forward slashes (/)
 - Examples:
@@ -81,7 +81,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ---
 
-📌 How It Works
+### 📌 How It Works
 
 - Scans Gmail for emails with the specified label
 - Creates a year-based folder structure
@@ -106,7 +106,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ## Automation
 
-📌 Automating the Google Apps Script
+### 📌 Automating the Google Apps Script
 
 1. Click Run (▶) in Google Apps Script to test
 2. Click Triggers (⏰) → Add Trigger:
@@ -117,7 +117,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ---
 
-📌 Further Automation
+### 📌 Further Automation
 
 - To automate copying files from Gdrive to a local folder, use rclone. This example copies only the markdown files to an existing Obsidian vault:
   - `rclone sync "gdrive:Meeting Summaries/md" "/Users/YOUR_USERNAME/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVaultName/Meeting Summaries"`
@@ -127,7 +127,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 ---
 
-📌 Choosing Between rclone Commands
+### 📌 Choosing Between rclone Commands
 
 - `rclone sync`: Creates an exact mirror of the Google Drive folder
   - Downloads new files from Google Drive
