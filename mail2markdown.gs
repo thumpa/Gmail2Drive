@@ -1,4 +1,7 @@
 function saveAIMeetingSummaryEmails() {
+  // Configuration
+  var labelName = "AI Meeting Notes"; // Gmail label to process
+  var processedLabelName = "Processed"; // Label to mark processed emails
   var mainFolderName = "Meeting Summaries"; // Root folder on Google Drive
   var mdSubFolderName = "md"; // Markdown subfolder
   var pdfSubFolderName = "pdf"; // PDF subfolder
@@ -8,9 +11,15 @@ function saveAIMeetingSummaryEmails() {
   var mdFolder = getOrCreateSubFolder(mainFolder, mdSubFolderName);
   var pdfFolder = getOrCreateSubFolder(mainFolder, pdfSubFolderName);
 
-  var label = GmailApp.getUserLabelByName("AI Meeting Notes"); // Set relevant gmail label
+  // Get or create the Processed label
+  var processedLabel = GmailApp.getUserLabelByName(processedLabelName);
+  if (!processedLabel) {
+    processedLabel = GmailApp.createLabel(processedLabelName);
+  }
+
+  var label = GmailApp.getUserLabelByName(labelName);
   if (!label) {
-    console.log("Label not found: AI Meeting Notes");
+    console.log(`Label not found: ${labelName}`);
     return;
   }
 
@@ -20,7 +29,11 @@ function saveAIMeetingSummaryEmails() {
     var messages = thread.getMessages();
 
     messages.forEach(message => {
-      if (message.isStarred()) {
+      // Check if this thread has already been processed by looking for the Processed label
+      var processedThreads = processedLabel.getThreads();
+      var isProcessed = processedThreads.some(processedThread => processedThread.getId() === thread.getId());
+      
+      if (isProcessed) {
         console.log(`Skipping already processed email: ${message.getSubject()}`);
         return;
       }
@@ -84,8 +97,8 @@ function saveAIMeetingSummaryEmails() {
         console.log(`📂 PDF file already exists: ${pdfFileName}`);
       }
 
-      // ✅ Mark the email as processed only after both formats are saved
-      message.star();
+      // ✅ Mark the thread as processed by adding the Processed label
+      processedLabel.addToThread(thread);
     });
   });
 }

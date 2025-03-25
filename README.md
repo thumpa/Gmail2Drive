@@ -2,10 +2,12 @@
 
 This repository contains two Google Apps Scripts:
 
-## mail2markdown.gs
-This is a Google Apps Script to export emails from Gmail with the selected label to a specified folder as both markdown and PDF files. This was originally created to get AI meeting summaries out of my email and into Obsidian as markkdown files. The styling for the markdown export has been based on emails from Fathom.ai, so may need adjustments if using a different service or if the emails have a different layout. Processed emails are automatically starred so it will only generate files for new emails.
+## mail2markdown.gs Summary
 
-## attachment2drive.gs
+This is a Google Apps Script to export emails from Gmail with the selected label to a specified folder as both markdown and PDF files. This was originally created to get AI meeting summaries out of my email and into Obsidian as markdown files. The styling for the markdown export has been based on emails from Fathom.ai, so may need adjustments if using a different service or if the emails have a different layout. Processed emails are marked with a "Processed" label to prevent duplicate processing.
+
+## attachment2drive.gs Summary
+
 This is a Google Apps Script to automatically save PDF attachments from Gmail emails with a specified label to a structured folder on Google Drive. It was created to handle recurring PDF attachments (like monthly invoices) by saving them with standardized names and organizing them by year. The script marks processed emails with a "Processed" label to prevent duplicate processing, and allows for flexible folder structures and file naming conventions.
 
 ---
@@ -17,8 +19,13 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 1. Open Google Drive and create a folder named Meeting Summaries
 2. Open Google Apps Script (https://script.google.com/)
 3. Paste the contents of the code.gs file in the script window
-4. Save the script
-5. Run the script
+4. Update the configuration variables at the top of the script:
+   - `labelName`: The Gmail label to search for (use full path for nested labels, e.g., "Parent/Child Label")
+   - `processedLabelName`: The label to mark processed emails (default: "Processed")
+   - `mainFolderName`: The Google Drive folder to save to
+   - `mdSubFolderName`: Subfolder for markdown files (default: "md")
+   - `pdfSubFolderName`: Subfolder for PDF files (default: "pdf")
+5. Save and run the script
 
 ---
 
@@ -27,7 +34,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 - Scans Gmail for emails with the relevant label
 - Creates a weekly folder inside the specified folder for each format
 - Saves each email as a Markdown file and PDF file inside the correct weekly folder
-- Marks each processed email as Starred
+- Marks processed emails with a "Processed" label
 - Files are created with the following filename structure:
   - [EmailSubject][Date][EmailTimeStamp].md
 - Folder Structure Example:
@@ -58,6 +65,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 3. Paste the contents of attachment2drive.gs in the script window
 4. Update the configuration variables at the top of the script:
    - `labelName`: The Gmail label to search for (use full path for nested labels, e.g., "Parent/Child Label")
+   - `processedLabelName`: The label to mark processed emails (default: "Processed")
    - `mainFolderName`: The Google Drive folder to save to
    - `subFolderName`: Optional subfolder (leave empty to save directly in main folder)
    - `fileNamePrefix`: Prefix for saved files (can be different from label)
