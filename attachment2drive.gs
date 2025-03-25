@@ -4,9 +4,9 @@ function saveEmailAttachments() {
   var processedLabelName = "Processed"; // Label to mark processed emails
   var mainFolderName = "Municipal Invoices"; // Root folder on Google Drive
   var subFolderName = "PDF"; // Optional subfolder (leave empty to save directly in main folder)
-  var fileNamePrefix = "Municipal Invoice"; // Prefix for saved files (can be different from label)
+  var fileNamePrefix = "MunicipalInvoice"; // Prefix for saved files (can be different from label)
   
-  // Get or create the main folder
+  // Get or create the main folder in root drive
   var mainFolder = getOrCreateFolder(mainFolderName);
   
   // Get or create the Processed label
@@ -29,8 +29,8 @@ function saveEmailAttachments() {
     var messages = thread.getMessages();
     
     messages.forEach(message => {
-      // Check if message has already been processed
-      if (message.getLabels().contains(processedLabel)) {
+      // Check if message's thread has already been processed
+      if (processedLabel.getThreads().indexOf(thread) !== -1) {
         console.log(`Skipping already processed email: ${message.getSubject()}`);
         return;
       }
@@ -72,8 +72,8 @@ function saveEmailAttachments() {
         }
       });
       
-      // Mark the email as processed by adding the Processed label
-      message.addLabel(processedLabel);
+      // Mark the thread as processed by adding the Processed label
+      processedLabel.addToThread(thread);
     });
   });
 }
@@ -86,10 +86,11 @@ function fileExistsInDrive(folder, fileName) {
   return files.hasNext();
 }
 
-// Function to get or create a folder
+// Function to get or create a folder in root drive
 function getOrCreateFolder(folderName) {
-  var folders = DriveApp.getFoldersByName(folderName);
-  return folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
+  var rootFolder = DriveApp.getRootFolder();
+  var folders = rootFolder.getFoldersByName(folderName);
+  return folders.hasNext() ? folders.next() : rootFolder.createFolder(folderName);
 }
 
 // Function to get or create a subfolder

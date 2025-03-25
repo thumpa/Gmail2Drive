@@ -57,11 +57,19 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 2. Open Google Apps Script (https://script.google.com/)
 3. Paste the contents of attachment2drive.gs in the script window
 4. Update the configuration variables at the top of the script:
-   - `labelName`: The Gmail label to search for
+   - `labelName`: The Gmail label to search for (use full path for nested labels, e.g., "Parent/Child Label")
    - `mainFolderName`: The Google Drive folder to save to
    - `subFolderName`: Optional subfolder (leave empty to save directly in main folder)
    - `fileNamePrefix`: Prefix for saved files (can be different from label)
 5. Save and run the script
+
+📌 Gmail Label Configuration
+
+- For nested labels, specify the full path using forward slashes (/)
+- Examples:
+  - `"Invoices/Municipal"` for a label nested under "Invoices"
+  - `"Work/2024/Receipts"` for a deeply nested label
+- The script will create the "Processed" label at the root level, not nested
 
 ---
 
