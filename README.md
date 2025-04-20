@@ -1,6 +1,6 @@
 # Gmail2Drive
 
-This repository provides two Google Apps Scripts designed to automate the extraction and organization of content from Gmail to Google Drive. The first script (`mail2markdown.gs`) converts AI meeting summary emails into markdown and PDF files, making them easily accessible in note-taking applications like Obsidian. The second script (`attachment2drive.gs`) manages recurring PDF attachments (such as invoices or receipts) by automatically saving them to Google Drive with standardized names and year-based organization. Both scripts use Gmail labels to track processed emails and can be automated to run at regular intervals.
+This repository provides two Google Apps Scripts designed to automate the extraction and organisation of content from Gmail to Google Drive. The first script (`mail2markdown.gs`) converts AI meeting summary emails into markdown and PDF files, making them easily accessible in note-taking applications like Obsidian. The second script (`attachment2drive.gs`) manages recurring PDF attachments (such as invoices or receipts) by automatically saving them to Google Drive with standardised names and year-based organisation. Both scripts use Gmail labels to track processed emails and can be automated to run at regular intervals.
 
 ## Table of Contents
 
@@ -32,7 +32,7 @@ This is a Google Apps Script to export emails from Gmail with the selected label
 
 ### 1.2 attachment2drive.gs Summary
 
-This is a Google Apps Script to automatically save PDF attachments from Gmail emails with a specified label to a structured folder on Google Drive. It was created to handle recurring PDF attachments (like monthly invoices) by saving them with standardized names and organizing them by year. The script marks processed emails with a "Processed" label to prevent duplicate processing, and allows for flexible folder structures and file naming conventions.
+This is a Google Apps Script to automatically save PDF attachments from Gmail emails with a specified label to a structured folder on Google Drive. It was created to handle recurring PDF attachments (like monthly invoices) by saving them with standardised names and organising them by year. The script marks processed emails with a "Processed" label to prevent duplicate processing, and allows for flexible folder structures and file naming conventions.
 
 ---
 
@@ -101,7 +101,7 @@ This is a Google Apps Script to automatically save PDF attachments from Gmail em
 
 - Scans Gmail for emails with the specified label
 - Creates a year-based folder structure
-- Saves PDF attachments with standardized names
+- Saves PDF attachments with standardised names
 - Marks processed emails with a "Processed" label
 - Files are created with the following filename structure:
   - [FileNamePrefix]_[YYYY]-[MM]-[DD].pdf
